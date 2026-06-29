@@ -11,6 +11,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   dbRun: (sql, params) => ipcRenderer.invoke('db:run', { sql, params }),
   dbGet: (sql, params) => ipcRenderer.invoke('db:get', { sql, params }),
   
+  // Authentication APIs
+  login: (username, password) => ipcRenderer.invoke('auth:login', { username, password }),
+  verifyToken: (token) => ipcRenderer.invoke('auth:verify-token', { token }),
+  
   // Future APIs will be added here in upcoming sessions
-  // Authentication, Patient Management, Billing, etc.
+  // Patient Management, Billing, etc.
 });
